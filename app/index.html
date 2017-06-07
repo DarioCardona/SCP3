@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="AngularScaffold">
+  <head>
+    <meta charset="utf-8">
+    <title>Hotel MacArthur</title>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/forms.css">
+    <link rel="stylesheet" href="styles/history.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="styles/sweetalert.css">
+    <link href="styles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/angular-keypad/dist/angular-keypad.css">
+
+    <!-- endinject -->
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css">
+    <!-- endinject -->
+
+
+    <!--home-->
+     <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <ul class="topnav" id="myTopnav" ng-controller ="UsersController">
+      <li>
+        <a class="navbar-brand active" href = "" ng-click="clickIconButton() ">
+          <img class="logo" alt="Brand" src="../img/logomacarthur.png" style="
+             width: 8em;
+             height: 2.8em;
+             padding-top: 0.2em;"
+          >
+        </a>
+      </li>
+      <li ng-if="show_logout()" ng-cloak>
+        <a href="">Hola, {{$sessionStorage.currentUser.username}}!</a>
+      </li>
+      <div class="pull-right">
+        <li ng-cloak ng-show="show_for_admin()" ><a href="/#/home">Repartición de Habitaciones</a></li>
+        <li ng-if="show_for_admin()" ng-cloak><a href="/#/manage">Manejar Usuarios</a></li>
+        <li ng-if="show_for_admin()" ng-cloak><a href="/#/reports">Historial</a></li>
+        <li ng-if="show_for_admin()" ng-cloak><a href="/#/problemas">Manejar Problemas</a></li>
+        <li ng-if="show_for_admin()" ng-cloak  ng-click ="show_options()">
+          <a href="" class = "glyphicon glyphicon-cog" data-toggle="modal" data-target="#settings_modal" ></a>
+        </li>
+        <li ng-if="show_logout()" ng-cloak ng-click="logout()"><a href="">Cerrar Sesión</a></li>
+        <li class="icon">
+          <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+        </li>
+      </div>
+    </ul>
+
+    <div class="container-extra">
+    </div>
+
+
+    <div ui-view ></div>
+    <script>
+      function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+              x.className += " responsive";
+          } else {
+              x.className = "topnav";
+          }
+      }
+    </script>
+  </body>
+
+  <!-- bower:js -->
+  <script src="/jquery/dist/jquery.js"></script>
+  <script src="/jquery-ui/jquery-ui.js"></script>
+  <script src="/jquery.cookie/jquery.cookie.js"></script>
+  <script src="/angular/angular.js"></script>
+  <script src="/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bootstrap-css/js/bootstrap.min.js"></script>
+  <script src="/bootstrap3-dialog/dist/js/bootstrap-dialog.js"></script>
+  <script src="/ngstorage/ngStorage.js"></script>
+  <script src="angular-dragdrop/src/angular-dragdrop.min.js"></script>
+  <script src="/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
+  <script src="scripts/notify.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.4.6/angular-locale_es-es.js"></script>
+
+  <!-- endinject -->
+  <script src="app.js"></script>
+  <!-- inject:js -->
+  <script src="scripts/controllers/NavbarController.js"></script>
+  <script src="scripts/controllers/UsersController.js"></script>
+  <script src="scripts/services/UserService.js"></script>
+  <script src="scripts/controllers/ClassController.js"></script>
+  <script src="scripts/services/ClassService.js"></script>
+
+  <script src="scripts/services/authService.js"></script>
+  <script src="/angular-keypad/dist/angular-keypad.js"></script>
+
+  <!-- endinject -->
+
+</html>

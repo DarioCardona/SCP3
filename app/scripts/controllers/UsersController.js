@@ -57,14 +57,14 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
     */
 
     $scope.crear_usuario = function(){
-      console.log(!!$scope.usuario.Firstname )
+      /*console.log(!!$scope.usuario.Firstname )
       console.log( !!$scope.usuario.Secondname )
        console.log( !!$scope.usuario.cel)
 
          console.log(  !!$scope.usuario.direction)
         console.log(   !!$scope.usuario.id)
          console.log(   !!$scope.usuario.account)
-         console.log(    !!$scope.usuario.carrier )
+         console.log(    !!$scope.usuario.carrier )*/
 
       if (!!$scope.usuario.Firstname && !!$scope.usuario.Secondname && !!$scope.usuario.cel  && !!$scope.usuario.direction
            &&  !!$scope.usuario.id &&  !!$scope.usuario.account && !!$scope.usuario.carrier) {
@@ -76,6 +76,12 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
              }).catch(function(err){
                swal("Error", "Error al guardar el usuario", "error");
            });
+           $scope.getUser = function(){
+             UserService.GetUser().then(function(response){
+             $scope.lisUsuario = response.data
+             console.log($scope.lisUsuario);
+             });
+           }
       }else{
 
         swal("","Debe llenar todos los campos correctamente para poder guardar el usuario");
@@ -85,28 +91,27 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
 
 
     $scope.modificar_usuario = function(){
-     /* console.log(!!$scope.usuarioSeleccionado.name )
-      console.log( !!$scope.usuarioSeleccionado.username )
+    /*  console.log(!!$scope.usuarioSeleccionado.Firstname )
+      console.log( !!$scope.usuarioSeleccionado.Secondname )
       console.log( !!$scope.usuarioSeleccionado.cel)
-      console.log( !!$scope.usuarioSeleccionado.tel )
-      console.log(  !!$scope.usuarioSeleccionado.direction)
-      console.log(   !!$scope.usuarioSeleccionado.id)
-      console.log(   !!$scope.usuarioSeleccionado.civil_status)
-      console.log(    !!$scope.usuarioSeleccionado.children )
-      console.log(    !!$scope.usuarioSeleccionado.role );*/
+      console.log( !!$scope.usuarioSeleccionado.id )
+      console.log(  !!$scope.usuarioSeleccionado.account)
+      console.log(   !!$scope.usuarioSeleccionado.direction)
+      console.log(    !!$scope.usuarioSeleccionado.carrier )*/
+
       var temp = {
-        password : $scope.usuarioSeleccionado.password,
-        username : $scope.usuarioSeleccionado.username,
-        nombre : $scope.usuarioSeleccionado.name,
-        employee_type : $scope.usuarioSeleccionado.employee_type,
-        status:$scope.usuarioSeleccionado.status,
-        role: $scope.usuarioSeleccionado.role,
-        pin: $scope.usuarioSeleccionado.pin,
-        photo: $scope.usuarioSeleccionado.photo
+        Firstname : $scope.usuarioSeleccionado.Firstname,
+        Secondname : $scope.usuarioSeleccionado.Secondname,
+        cel : $scope.usuarioSeleccionado.cel,
+        id : $scope.usuarioSeleccionado.id,
+        account:$scope.usuarioSeleccionado.account,
+        direction: $scope.usuarioSeleccionado.direction,
+        carrier: $scope.usuarioSeleccionado.carrier,
+
       }
-     if (!!$scope.usuarioSeleccionado.name && !!$scope.usuarioSeleccionado.username && !!$scope.usuarioSeleccionado.cel
-          && !!$scope.usuarioSeleccionado.tel && !!$scope.usuarioSeleccionado.direction &&  !!$scope.usuarioSeleccionado.id
-          &&  !!$scope.usuarioSeleccionado.civil_status && !!$scope.usuarioSeleccionado.password) {
+     if (!!$scope.usuarioSeleccionado.Firstname && !!$scope.usuarioSeleccionado.Secondname && !!$scope.usuarioSeleccionado.cel
+          && !!$scope.usuarioSeleccionado.id && !!$scope.usuarioSeleccionado.account &&  !!$scope.usuarioSeleccionado.carrier
+          &&  !!$scope.usuarioSeleccionado.direction ) {
           UserService.UpdateUser($scope.usuarioSeleccionado).then(function(algo){
         swal("¡Exito!","success");
         $scope.usuarioSeleccionado = " ";
@@ -115,7 +120,19 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
     }else{
        swal("Error", "El no se puedo modificar el usuario proque no siguio el formato adecuado", "error");
      }
-    }
+   };
+
+
+    $scope.killUser = function(){
+      console.log($scope.usuarioSelec)
+      console.log($scope.usuarioSelec._id)
+      UserService.Delete($scope.usuarioSelec._id).then(function(response){
+        swal("¡Exito!","Success");
+      }).catch(function(err){
+        swal("Error", "No se puedo modificar el Usuario", "error");
+      });
+    };
+
 
 
     $scope.isLogged = function(){
@@ -176,9 +193,7 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
       }
    	}
 
-   	$scope.signUp =function(){
-      $state.go("signUp")
-   	}
+
 
     //checkups for ng-if in navbar
     $scope.check_login_allowed = function(){

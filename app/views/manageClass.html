@@ -1,6 +1,6 @@
-<div class="container" ng-controller="UsersController" ng-init="getUser()">
+<div class="container" ng-controller="ClassController" ng-init="getClass()">
 
-  <h1>Manejar Usuarios</h1>
+  <h1>Manejar Secciones</h1>
   <ul class="nav nav-tabs" ng-init="tab = 1">
     <li role="presentation" class="tab" ng-class="{active: tab==1}" ng-click="tab = 1" ><a>Crear Secciones</a></li>
     <li role="presentation" class="tab" ng-class="{active: tab==2}" ng-click="tab = 2"><a>Modificar Secciones</a></li>
@@ -10,43 +10,43 @@
   <div class="main-manage">
     <!-- Agregar Usuarios form -->
     <form class = "fix " ng-show="tab == 1">
-      <h2>Crear un Nuevo Usuario</h2>
+      <h2>Crear una Nueva Seccion</h2>
 
       <fieldset>
         <label class="mylabel" for="user">Codigo de la clase:</label>
-        <input type="text" id="user" name="user_username" ng-model ="usuario.Firstname" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
+        <input type="text" id="user" name="user_username" ng-model ="class.class_code" maxlength="15" required minlength="2" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
 
         <label class="mylabel" for="user">Nombre de la clase :</label>
-        <input type="text" id="user" name="user_username" ng-model ="usuario.Secondname" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
+        <input type="text" id="user" name="user_username" ng-model ="class.class_name" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
 
         <label class="mylabel" for="password">Unidades Valorativas:</label>
-        <input type="number" id="password" name="user_password" ng-model ="usuario.account" maxlength="15" required minlength="3" placeholder="La contraseña debe tener entre 6 y 15 caracteres" oninvalid="notsaved=false" pattern=".{5}.+">
+        <input type="number" id="password" name="user_password" ng-model ="class.unity" maxlength="15" required minlength="1" placeholder="La contraseña debe tener entre 6 y 15 caracteres" oninvalid="notsaved=false" pattern="[12345]">
 
 
       </fieldset>
       <p></p>
-      <button id="register" class="bform" ng-click="crear_usuario()">Registrar</button>
+      <button id="register" class="bform" ng-click="crear_class()">Registrar</button>
     </form>
 
     <!-- Modificar Usuarios form-->
     <form ng-show="tab == 2">
 
-      <h2>Modificar Usuarios</h2>
+      <h2>Modificar Seccion</h2>
 
       <fieldset>
-        <select ng-model="usuarioSeleccionado" ng-options="usuarios as usuarios.username for usuarios in lisUsuario" >
-          <option disabled selected value> -- Seleccione el usuario a modificar -- </option>
+        <select ng-model="claseSeleccionado" ng-options="usuarios as usuarios.class_code for usuarios in lisUsuario" >
+          <option disabled selected value> -- Seleccione el seccion a modificar -- </option>
         </select>
         <br>
 
         <label class="mylabel" for="namem">Codigo de la clase:</label>
-        <input ng-model="usuarioSeleccionado.Firstname" type="text" id="namem" name="user_name" maxlength="35" required minlength="7" required placeholder="El usuario debe tener entre 7 y 35 letras y espacios" pattern="([a-zA-Z]+( [a-zA-Z]+)?){7}( [a-zA-Z]+)?( [a-zA-Z]+)?( [a-zA-Z]+)?">
+        <input ng-model="claseSeleccionado.class_code" type="text" id="namem" name="user_name" maxlength="35" required minlength="2" required placeholder="El usuario debe tener entre 7 y 35 letras y espacios" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
 
         <label class="mylabel" for="userm">Nombre de la clase:</label>
-        <input ng-model="usuarioSeleccionado.Secondname" type="text" id="userm" name="user_username" maxlength="15" required minlength="4" required placeholder="El usuario debe tener entre 4 y 15 letras" pattern="[a-zA-Z]{3}[a-zA-Z]+\d*">
+        <input ng-model="claseSeleccionado.class_name" type="text" id="userm" name="user_username" maxlength="55" required minlength="4" required placeholder="El usuario debe tener entre 4 y 15 letras" pattern="[a-zA-Z]{3}[a-zA-Z]+\d*">
 
         <label class="mylabel" for="passwordm">Unidades valorativas:</label>
-        <input ng-model="usuarioSeleccionado.account" type="number" id="passwordm" name="user_password" maxlength="15" required minlength="6" placeholder="La contraseña debe tener entre 6 y 15 caracteres" pattern=".{5}.+">
+        <input ng-model="claseSeleccionado.unity" type="number" id="passwordm" name="user_password" maxlength="15" required minlength="1" placeholder="La contraseña debe tener entre 6 y 15 caracteres" pattern="[12345]">
 
 
 
@@ -54,17 +54,17 @@
       </fieldset>
       <p></p>
 
-      <button id="register" class="bform" ng-click="modificar_usuario()">Modificar</button>
+      <button id="register" class="bform" ng-click="modificar_clase()">Modificar</button>
     </form>
 
     <!-- eliminar Usuarios form-->
     <form ng-show="tab == 3">
 
-      <h2>Modificar Usuarios</h2>
+      <h2>Eliminar Seccion</h2>
 
       <fieldset>
-        <select ng-model="usuarioSeleccionado" ng-options="usuarios as usuarios.username for usuarios in lisUsuario" >
-          <option disabled selected value> -- Seleccione el usuario a modificar -- </option>
+        <select ng-model="claseSelec" ng-options="usuarios as usuarios.class_code for usuarios in lisUsuario" >
+          <option disabled selected value> -- Seleccione el seccion a eliminar -- </option>
         </select>
         <br>
       </fieldset>
@@ -72,7 +72,7 @@
       <br>
       <br>
       <br>
-      <button id="register" class="bform" ng-click="modificar_usuario()">Eliminar</button>
+      <button id="register" class="bform" ng-click="killclass()">Eliminar</button>
     </form>
 
 

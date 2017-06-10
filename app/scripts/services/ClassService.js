@@ -1,4 +1,4 @@
-angular.module('AngularScaffold.Services').factory('UserService', ['$http',
+angular.module('AngularScaffold.Services').factory('ClassService', ['$http',
 	function($http){
 		$http.defaults.withCredentials = true;
 		//var baseUrl = 'https://hotelmacarthur-backend.herokuapp.com/';
@@ -6,13 +6,16 @@ angular.module('AngularScaffold.Services').factory('UserService', ['$http',
 		return {
 			Register: function(payload){
 				console.log(payload)
-	            return $http.post(baseUrl + "v1/register", payload);
+	            return $http.post(baseUrl + "v1/registerClass", payload);
         	},
-	        GetUser: function(){
-      			return $http.get(baseUrl + "v1/getUser");
+	        GetClass: function(){
+      			return $http.get(baseUrl + "v1/getClass");
 	        },
-	        UpdateUser: function(payload){
-	            return $http.post(baseUrl + "v1/updateUser", payload);
-        	}
+	        UpdateClass: function(payload){
+	            return $http.post(baseUrl + "v1/updateClass", payload);
+        	},
+					Delete: function(id){
+          return $http.delete(baseUrl + "v1/deleteClass/" + id);
+    	}
 	  	};
 }]);

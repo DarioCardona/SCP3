@@ -13,6 +13,9 @@ angular.module('AngularScaffold.Services').factory('UserService', ['$http',
 	        },
 	        UpdateUser: function(payload){
 	            return $http.post(baseUrl + "v1/updateUser", payload);
-        	}
+        	},
+					Delete: function(id){
+          return $http.delete(baseUrl + "v1/deleteUser/" + id);
+    	}
 	  	};
 }]);

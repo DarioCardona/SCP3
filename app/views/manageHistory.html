@@ -1,42 +1,48 @@
-<div class="container" ng-controller="HistoryController" ng-init="getUser()">
+<div class="container" ng-controller="HistoryController" ng-init="getClass()">
 
   <h1>Historial Academico</h1>
   <ul class="nav nav-tabs" ng-init="tab = 1">
     <li role="presentation" class="tab" ng-class="{active: tab==1}" ng-click="tab = 1" ><a> Matricula </a></li>
     <li role="presentation" class="tab" ng-class="{active: tab==2}" ng-click="tab = 2"><a> Ver Historial</a></li>
-  
+
   </ul>
 
   <div class="main-manage">
     <!-- Agregar Usuarios form -->
     <form class = "fix " ng-show="tab == 1">
-      <h2>Crear un Nuevo Usuario</h2>
+      <h2> Matricular seccion </h2>
 
       <fieldset>
-        <label class="mylabel" for="user">Nombre:</label>
-        <input type="text" id="user" name="user_username" ng-model ="usuario.Firstname" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
+        <select ng-model="historial.class_code" ng-options="clase as clase.class_code for clase in lisclase" >
+          <option disabled selected value> -- Seleccione la seccion -- </option>
+        </select>
+        <br>
 
-        <label class="mylabel" for="user">Apellido :</label>
-        <input type="text" id="user" name="user_username" ng-model ="usuario.Secondname" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
+        <label class="mylabel" for="user"> Año :</label>
+        <input type="date" id="user" name="user_username" ng-model ="historial.year" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" >
 
-        <label class="mylabel" for="password">Numero de Cuenta:</label>
-        <input type="number" id="password" name="user_password" ng-model ="usuario.account" maxlength="15" required minlength="3" placeholder="La contraseña debe tener entre 6 y 15 caracteres" oninvalid="notsaved=false" pattern=".{5}.+">
+        <label class="mylabel" for="user"> Semestre :</label>
+        <select ng-model="historial.semester"  >
+          <option disabled selected value> -- Seleccione la seccion -- </option>
+          <option>Semestre 1</option>
+          <option>Semestre 2</option>
+        </select>
 
-        <label class="mylabel" for="cel">Celular:</label>
-        <input type="text" id="cel" name="user_username" ng-model ="usuario.cel" required maxlength="8" minlength="8" placeholder="El celular debe tener 8 números Ej. 99889988" oninvalid="notsaved=false" pattern="\b\d{4}\d{4}\b">
+        <label class="mylabel" for="user"> Periodo :</label>
+        <select ng-model="historial.period"  >
+          <option disabled selected value> -- Seleccione la seccion -- </option>
+          <option>Periodo 1</option>
+          <option>Periodo 2</option>
+        </select>
 
-        <label class="mylabel" for="dir">Direccion:</label>
-        <input type="text" id="dir" name="user_username" ng-model ="usuario.direction" required minlength="10" required placeholder="La dirección debe tener más de 10 caracteres" oninvalid="notsaved=false" pattern=".{9}.+">
+        <label class="mylabel" for="dir">Nota:</label>
+        <input type="number" id="dir" name="user_username" ng-model ="historial.score" required minlength="1" required placeholder="La dirección debe tener más de 10 caracteres" oninvalid="notsaved=false" pattern="">
 
-        <label class="mylabel" for="idnum"># Identidad:</label>
-        <input type="text" id="idnum" name="user_username" ng-model="usuario.id" maxlength="15" required minlength="15" required placeholder="Formato del número de identidad 0000-1234-56789" oninvalid="notsaved=false" pattern="\b\d{4}[-]\d{4}[-]\d{5}\b">
 
-        <label class="mylabel" for="user">Carrera:</label>
-        <input type="text" id="user" name="user_username" ng-model ="usuario.carrier" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras y números" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
 
       </fieldset>
       <p></p>
-      <button id="register" class="bform" ng-click="crear_usuario()">Registrar</button>
+      <button id="register" class="bform" ng-click="crear_matricula()">Registrar</button>
     </form>
 
     <!-- Modificar Usuarios form-->
@@ -76,26 +82,11 @@
       </fieldset>
       <p></p>
 
-      <button id="register" class="bform" ng-click="modificar_usuario()">Modificar</button>
+      <button id="register" class="bform" ng-click=" ">Modificar</button>
     </form>
 
     <!-- eliminar Usuarios form-->
-    <form ng-show="tab == 3">
 
-      <h2>Modificar Usuarios</h2>
-
-      <fieldset>
-        <select ng-model="usuarioSelec" ng-options="usuarios as usuarios.account for usuarios in lisUsuario " >
-          <option disabled selected value> -- Seleccione el usuario a modificar -- </option>
-        </select>
-        <br>
-      </fieldset>
-      <p></p>
-      <br>
-      <br>
-      <br>
-      <button id="register" class="bform" ng-click="killUser()">Eliminar</button>
-    </form>
 
 
   </div>

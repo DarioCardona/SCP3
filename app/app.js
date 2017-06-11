@@ -18,6 +18,12 @@ app.config(['$stateProvider', '$urlRouterProvider','$provide', function($statePr
             templateUrl: '/views/login.html'
         })
 
+        .state('history', {
+            url: '/history',
+            params: {content:undefined},
+            templateUrl: '/views/manageHistory.html'
+        })
+
         .state('class', {
             url: '/class',
             params: {content:undefined},

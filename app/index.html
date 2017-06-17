@@ -42,10 +42,10 @@
         <a href="">Hola, {{$sessionStorage.currentUser.username}}!</a>
       </li>
       <div class="pull-right">
-        <li ng-cloak ng-show="show_for_admin()" ><a href="/#/home">Repartición de Habitaciones</a></li>
-        <li ng-if="show_for_admin()" ng-cloak><a href="/#/manage">Manejar Usuarios</a></li>
-        <li ng-if="show_for_admin()" ng-cloak><a href="/#/reports">Historial</a></li>
-        <li ng-if="show_for_admin()" ng-cloak><a href="/#/problemas">Manejar Problemas</a></li>
+        <li ng-cloak ng-show="show_for_admin()" ><a href="/#/class">Secciones</a></li>
+        <li ng-if="show_for_admin()" ng-cloak><a href="/#/home">Manejar Usuarios</a></li>
+        <li ng-if="show_for_admin()" ng-cloak><a href="/#/history">Historial</a></li>
+        <li ng-if="show_for_admin()" ng-cloak><a href="/#/managehistory">Matriculas</a></li>
         <li ng-if="show_for_admin()" ng-cloak  ng-click ="show_options()">
           <a href="" class = "glyphicon glyphicon-cog" data-toggle="modal" data-target="#settings_modal" ></a>
         </li>

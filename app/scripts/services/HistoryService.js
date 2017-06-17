@@ -8,8 +8,8 @@ angular.module('AngularScaffold.Services').factory('HistoryService', ['$http',
 				console.log(payload)
 	            return $http.post(baseUrl + "v1/registerMatricula", payload);
         	},
-	        GetClass: function(){
-      			return $http.get(baseUrl + "v1/getClass");
+	        GetHistory: function(){
+      			return $http.get(baseUrl + "v1/getHistory");
 	        },
 	        UpdateClass: function(payload){
 	            return $http.post(baseUrl + "v1/updateClass", payload);

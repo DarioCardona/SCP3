@@ -57,14 +57,14 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
     */
 
     $scope.crear_usuario = function(){
-      /*console.log(!!$scope.usuario.Firstname )
+      console.log(!!$scope.usuario.Firstname )
       console.log( !!$scope.usuario.Secondname )
        console.log( !!$scope.usuario.cel)
 
          console.log(  !!$scope.usuario.direction)
         console.log(   !!$scope.usuario.id)
          console.log(   !!$scope.usuario.account)
-         console.log(    !!$scope.usuario.carrier )*/
+         console.log(    !!$scope.usuario.carrier )
 
       if (!!$scope.usuario.Firstname && !!$scope.usuario.Secondname && !!$scope.usuario.cel  && !!$scope.usuario.direction
            &&  !!$scope.usuario.id &&  !!$scope.usuario.account && !!$scope.usuario.carrier) {
@@ -158,23 +158,16 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
     }
 
    	$scope.login = function(){
-      if ($scope.username != null && $scope.password != null) {
+      if ($scope.Firstname != null && $scope.password != null) {
         UserData = {
-          username: $scope.username,
+          Firstname: $scope.Firstname,
           password: $scope.password
         }
         authService.Login(UserData).then(function(response){
           if(response.data != "error"){
-              $sessionStorage.currentUser = response.data
-              $sessionStorage.logged = true;
-              if(response.data.role === 0){
-                $scope.actualUser = false;
+
                 $state.go("home")
-              }
-              if(response.data.role === 1){
-                $scope.actualUser = true;
-                $state.go("emp")
-              }
+
           }else{
             swal("Error", "Ingrese los datos correctos", "error");
           }
@@ -206,14 +199,10 @@ angular.module('AngularScaffold.Controllers',['bc.AngularKeypad'])
     }
 
     $scope.show_for_admin= function(){
-      if(typeof($sessionStorage.currentUser) === "undefined")
-        return false;
-      if($sessionStorage.currentUser.role == 0 && $state.current.name != 'login' && $state.current.name != 'start'
-        && $state.current.name != 'pin_login'){
-        $scope.is_admin_logged = true;
+      
         return true;
-      }
-      return false;
+
+
    }
 
     $scope.show_logout= function(){

@@ -1,4 +1,4 @@
-angular.module('AngularScaffold.Services').factory('AuthService', ['$http', 
+angular.module('AngularScaffold.Services').factory('AuthService', ['$http',
 	function($http){
 		$http.defaults.withCredentials = true;
 		//var baseUrl = 'https://hotelmacarthur-backend.herokuapp.com/';
@@ -8,6 +8,7 @@ angular.module('AngularScaffold.Services').factory('AuthService', ['$http',
 				return $http.get(baseUrl +"v1/logout");
 			},
 			Login: function(payload){
+				console.log(payload)
 				return $http.post(baseUrl +"v1/login", payload);
 			},
 			LoginWithPin: function(payload){

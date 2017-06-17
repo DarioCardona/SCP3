@@ -16,6 +16,9 @@
         <label class="mylabel" for="user">Nombre:</label>
         <input type="text" id="user" name="user_username" ng-model ="usuario.Firstname" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
 
+        <label class="mylabel" for="namem">Contraseña:</label>
+        <input ng-model="usuario.password" type="password" id="namem" name="user_name" maxlength="35" required minlength="3" required placeholder="El usuario debe tener entre 7 y 35 letras y espacios" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
+
         <label class="mylabel" for="user">Apellido :</label>
         <input type="text" id="user" name="user_username" ng-model ="usuario.Secondname" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
 
@@ -33,6 +36,13 @@
 
         <label class="mylabel" for="user">Carrera:</label>
         <input type="text" id="user" name="user_username" ng-model ="usuario.carrier" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras y números" oninvalid="notsaved=false" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
+
+        <div class="role-user">
+          <label class="mylabel">Rol:</label> <br>
+          <input ng-model="usuario.role" type="radio" id="adm" value="0" ><label class="mylabel" for="adm" class="light"> Administrador</label><br>
+          <input ng-model="usuario.role" type="radio" id="emp"  value="1" ><label class="mylabel" for="emp" class="light"> Estudiante </label>
+        </div>
+
 
       </fieldset>
       <p></p>
@@ -53,6 +63,9 @@
         <label class="mylabel" for="namem">Nombre:</label>
         <input ng-model="usuarioSeleccionado.Firstname" type="text" id="namem" name="user_name" maxlength="35" required minlength="3" required placeholder="El usuario debe tener entre 7 y 35 letras y espacios" pattern="([a-zA-Z]+( [a-zA-Z]+)?){7}( [a-zA-Z]+)?( [a-zA-Z]+)?( [a-zA-Z]+)?">
 
+        <label class="mylabel" for="namem">Contraseña:</label>
+        <input ng-model="usuarioSeleccionado.password" type="password" id="namem" name="user_name" maxlength="35" required minlength="3" required placeholder="El usuario debe tener entre 7 y 35 letras y espacios" pattern="[a-zA-Z]{3}[a-zA-Z]*\d*[a-zA-Z]*\d*[a-zA-Z]*\d*">
+
         <label class="mylabel" for="userm">Apellido:</label>
         <input ng-model="usuarioSeleccionado.Secondname" type="text" id="userm" name="user_username" maxlength="15" required minlength="3" required placeholder="El usuario debe tener entre 4 y 15 letras" pattern="[a-zA-Z]{3}[a-zA-Z]+\d*">
 
@@ -72,6 +85,11 @@
         <label class="mylabel" for="nacm">Carrera:</label>
         <input ng-model="usuarioSeleccionado.carrier" type="text" id="nacm" name="usuarioSeleccionado.birth_date" maxlength="15" required minlength="3" required placeholder="Formato de la fecha dd/mm/aaaa Ej. 22/03/1980" pattern="[a-zA-Z]{3}[a-zA-Z]+\d*">
 
+        <div class="role-user">
+          <label class="mylabel">Rol:</label> <br>
+          <input ng-model="usuarioSeleccionado.role" type="radio" id="adm" value="0" ><label class="mylabel" for="adm" class="light"> Administrador</label><br>
+          <input ng-model="usuarioSeleccionado.role" type="radio" id="emp"  value="1" ><label class="mylabel" for="emp" class="light"> Estudiante </label>
+        </div>
 
       </fieldset>
       <p></p>
